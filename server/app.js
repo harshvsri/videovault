@@ -5,22 +5,22 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var cors = require("cors");
+var session = require("express-session");
 
 var userRouter = require("./routes/user.router");
 var uploadRouter = require("./routes/upload.router");
 var connectDB = require("./configs/db.config");
 var corsOptions = require("./configs/cors.config");
+var sessionOptions = require("./configs/session.config");
 
 var app = express();
-
-// database connection
-connectDB();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-// cors setup
+connectDB();
+app.use(session(sessionOptions));
 app.use(cors(corsOptions));
 
 app.use(logger("dev"));
@@ -29,6 +29,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+// routes setup
 app.use("/users", userRouter);
 app.use("/uploads", uploadRouter);
 
