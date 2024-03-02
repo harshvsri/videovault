@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const Upload = require("./Upload.model");
 
 const userSchema = new mongoose.Schema({
   username: {

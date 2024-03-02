@@ -8,7 +8,6 @@ const commentSchema = new mongoose.Schema({
     ref: "Upload",
   },
   content: { type: String, required: true, min: 3, max: 500 },
-  likes: { type: Array, default: [] },
 });
 
 const Upload = mongoose.model("Comment", commentSchema);
