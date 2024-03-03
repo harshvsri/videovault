@@ -1,6 +1,6 @@
-# KINETO
+# VideoVault
 
-Kineto is a dynamic video sharing and streaming platform inspired by YouTube. It allows users to upload, share, and stream videos.
+VideoVault is a dynamic video sharing and streaming platform inspired by YouTube. It allows users to upload, share, and stream videos.
 
 Key features include:
 
