@@ -1,14 +1,24 @@
+import { CgProfile } from "react-icons/cg";
+import { IoIosCheckmarkCircle } from "react-icons/io";
+import { IoIosTime } from "react-icons/io";
+
 function VideoCard() {
   return (
     <div className="card">
       <img src="/placeholder.png"></img>
       <div className="card-info">
-        <div className="card_info-profile"></div>
-        <h3>Video Title</h3>
-      </div>
-      <div className="card-details">
-        <h3>Channel Name</h3>
-        <p>Views * Upload Time</p>
+        <div className="card-info-profile">
+          <CgProfile className="pic" />
+        </div>
+        <div className="card-info-details">
+          <h5>Getting started with videovault</h5>
+          <h6>
+            VideoVault.io <IoIosCheckmarkCircle />
+          </h6>
+          <p>
+            100M <IoIosTime /> 01.03.2024
+          </p>
+        </div>
       </div>
     </div>
   );

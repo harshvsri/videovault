@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function NavBar() {
   const [linksClass, setBtnClass] = useState("links");
@@ -20,13 +21,13 @@ function NavBar() {
       <div className={linksClass}>
         <ul>
           <li>
-            <a href="#">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="#">About</a>
+            <a href="#">Subscriptions</a>
           </li>
           <li>
-            <a href="#">Contact</a>
+            <a href="#">Your Channel</a>
           </li>
         </ul>
       </div>
