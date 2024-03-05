@@ -3,6 +3,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
 import Videos from "./components/Videos";
+import Player from "./components/Player";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
       <Route path="/register" element={<Register />} />
       <Route path="/" element={<Home />} exact>
         <Route path="/" element={<Videos />} index />
-        <Route path="test" element={<h1>hey there</h1>} />
+        <Route path="watch/:id" element={<Player />} />
       </Route>
     </Routes>
   );
