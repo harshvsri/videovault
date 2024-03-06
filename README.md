@@ -1,5 +1,7 @@
 # VideoVault
 
+![Screenshot](/assets/videovault-screenshot.png)
+
 VideoVault is a dynamic video sharing and streaming platform inspired by YouTube. It allows users to upload, share, and stream videos.
 
 Key features include:
@@ -25,7 +27,7 @@ This project was built using the MERN stack, which includes:
 
 The Entity-Relationship Diagram (ER-Diagram) below provides a visual representation of these data models, illustrating how different entities relate to each other within the system.
 
-![Data Model ER-Diagram](model.png)
+![Data Model ER-Diagram](/assets/model.png)
 
 ## Contribution Guide
 
