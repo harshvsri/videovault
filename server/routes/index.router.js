@@ -1,9 +1,14 @@
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
-const passport = require("passport");
 const User = require("../models/User.model");
 const authenticate = require("../middlewares/auth.middleware");
+const isAuthenticated = require("../middlewares/isAuth.middleware");
 
+/**
+ * @route POST /register
+ * @access Public
+ * @desc Register a new user
+ */
 router.post("/register", async (req, res, next) => {
   const { username, password, fullName } = req.body;
 
@@ -20,12 +25,37 @@ router.post("/register", async (req, res, next) => {
     password: hashedPassword,
     fullName,
   });
-  res.status(201).json({ message: "User created", user: newUser });
+
+  // Manually log the user in after registration
+  req.logIn(newUser, (err) => {
+    if (err) {
+      return next(err);
+    }
+    return res.status(200).json({
+      message: "Registration successful",
+      // Sending only the necessary user details
+      user: {
+        _id: user._id,
+        username: user.username,
+        email: user.email,
+      },
+    });
+  });
 });
 
+/**
+ * @route POST /login
+ * @access Public
+ * @desc Authenticate a user
+ */
 router.post("/login", authenticate);
 
-router.get("/logout", (req, res) => {
+/**
+ * @route GET /logout
+ * @access Private
+ * @desc Logout a user
+ */
+router.get("/logout", isAuthenticated, (req, res) => {
   req.logOut(() => res.status(200).json({ message: "Logout successful" }));
 });
 

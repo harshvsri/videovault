@@ -1,3 +1,7 @@
+/** isAuthenticated
+ * It is a middleware that checks if the user is authenticated. 
+ */
+
 function isAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     next();
