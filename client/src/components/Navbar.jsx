@@ -24,6 +24,9 @@ function NavBar() {
             <Link to="/">Home</Link>
           </li>
           <li>
+            <Link to="/upload">Upload</Link>
+          </li>
+          <li>
             <a href="#">Subscriptions</a>
           </li>
           <li>
