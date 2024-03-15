@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const User = require("../models/User.model");
-const authenticate = require("../middlewares/auth.middleware");
-const isAuthenticated = require("../middlewares/isAuth.middleware");
+const authenticate = require("../middlewares/authenticate.middleware");
+const isAuthenticated = require("../middlewares/isAuthenticated.middleware");
 
 /**
  * @route POST /register
@@ -20,14 +20,14 @@ router.post("/register", async (req, res, next) => {
   // Hash the password
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  const newUser = await User.create({
+  const user = await User.create({
     username,
     password: hashedPassword,
     fullName,
   });
 
   // Manually log the user in after registration
-  req.logIn(newUser, (err) => {
+  req.logIn(user, (err) => {
     if (err) {
       return next(err);
     }
@@ -37,7 +37,7 @@ router.post("/register", async (req, res, next) => {
       user: {
         _id: user._id,
         username: user.username,
-        email: user.email,
+        fullName: user.fullName,
       },
     });
   });

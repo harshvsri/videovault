@@ -14,7 +14,6 @@ var uploadRouter = require("./routes/upload.router");
 var connectDB = require("./configs/db.config");
 var corsOptions = require("./configs/cors.config");
 var sessionOptions = require("./configs/session.config");
-const { error } = require("console");
 require("./configs/passport.config");
 
 var app = express();

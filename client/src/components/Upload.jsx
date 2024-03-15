@@ -24,7 +24,7 @@ function Upload() {
     data.append("description", formData.description);
 
     // Send the data to the server
-    const url = import.meta.env.VITE_SERVER_URL + "/uploads/upload";
+    const url = import.meta.env.VITE_API_URL + "/uploads/upload";
     const response = await fetch(url, {
       method: "POST",
       body: data,
