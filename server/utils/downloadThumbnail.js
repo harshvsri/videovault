@@ -1,10 +1,10 @@
 const { BlobServiceClient } = require("@azure/storage-blob");
 
-async function downloadVideo(blobName) {
+async function downloadThumbnail(blobName) {
   try {
     const AZURE_STORAGE_CONNECTION_STRING =
       process.env.AZURE_STORAGE_CONNECTION_STRING;
-    const containerName = process.env.AZURE_STORAGE_VIDEO_CONTAINER_NAME;
+    const containerName = process.env.AZURE_STORAGE_THUMBNAIL_CONTAINER_NAME;
 
     // Create the BlobServiceClient object with connection string
     const blobServiceClient = BlobServiceClient.fromConnectionString(
@@ -25,4 +25,4 @@ async function downloadVideo(blobName) {
   }
 }
 
-module.exports = downloadVideo;
+module.exports = downloadThumbnail;

@@ -1,3 +1,4 @@
+const fs = require("fs");
 const path = require("path");
 const router = require("express").Router();
 const User = require("../models/User.model");
@@ -5,6 +6,7 @@ const Upload = require("../models/Upload.model");
 const isAuthenticated = require("../middlewares/isAuthenticated.middleware");
 const upload = require("../configs/multer.config");
 const uploadVideo = require("../utils/uploadVideo");
+const uploadThumbnail = require("../utils/uploadThumbnail");
 const downloadVideo = require("../utils/downloadVideo");
 
 /**
@@ -62,9 +64,8 @@ router.post(
   ]),
   async (req, res) => {
     // Get the file details from the request object
-    const harshID = "65f342b592412925bc818b50";
-    const userID = req.user._id;
-    const { title, description } = req.body;
+    const { userID, title, description } = req.body;
+    console.log(req.files);
 
     // Check if the video and thumbnail files are present
     if (!req.files || !req.files.video || !req.files.thumbnail) {
@@ -76,7 +77,12 @@ router.post(
     const thumbnailFilePath = req.files.thumbnail[0].path;
 
     // Create a new upload
-    uploadVideo(videoFilePath);
+    uploadVideo(videoFilePath).then(() => {
+      fs.unlinkSync(videoFilePath);
+    });
+    uploadThumbnail(thumbnailFilePath).then(() => {
+      fs.unlinkSync(thumbnailFilePath);
+    });
 
     const newUpload = await Upload.create({
       userID,

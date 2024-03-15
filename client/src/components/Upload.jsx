@@ -18,6 +18,10 @@ function Upload() {
     const data = new FormData();
 
     // append the video file and other form data to it
+    data.append(
+      "userID",
+      JSON.parse(localStorage.getItem("response")).user._id
+    );
     data.append("video", videoFile);
     data.append("thumbnail", imageFile);
     data.append("title", formData.title);

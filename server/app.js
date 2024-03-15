@@ -30,8 +30,8 @@ app.use(passport.session());
 
 // debug session and user
 app.use((req, res, next) => {
-  console.log(req.session);
-  console.log(req.user);
+  console.log("Session info:", req.session);
+  console.log("User info:", req.user);
   next();
 });
 
