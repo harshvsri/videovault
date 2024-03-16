@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import PrivateRoutes from "../utils/PrivateRoutes";
+import PrivateRoutes from "./utils/PrivateRoutes";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
