@@ -76,7 +76,7 @@ router.post(
     const videoFilePath = req.files.video[0].path;
     const thumbnailFilePath = req.files.thumbnail[0].path;
 
-    // Create a new upload
+    // Create a new upload then delete the files
     uploadVideo(videoFilePath).then(() => {
       fs.unlinkSync(videoFilePath);
     });
